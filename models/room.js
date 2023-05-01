@@ -5,7 +5,7 @@ const roomSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    maxcount: {
+    maxguest: {
         type: Number,
         required: true
     },
@@ -13,20 +13,18 @@ const roomSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    rentperday: {
+    venuecost: {
         type: Number,
         required: true
     },
-    imageurls : [],
+    
     currentbookings: [],
-    type: {
+    venuetype: [],
+    venuedetails: {
         type: String,
         required: true
     },
-    description: {
-        type: String,
-        required: true
-    }
+    imageurls : []
 } , {
     timestamps : true,
 })

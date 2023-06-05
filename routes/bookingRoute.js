@@ -10,6 +10,7 @@ router.post("/bookroom",async(req,res)=>{
         userid,
         fromdate,
         todate,
+        guestno,
         totalamount,
         totaldays, token} = req.body
 
@@ -33,6 +34,7 @@ router.post("/bookroom",async(req,res)=>{
                 const newbooking = new Booking({
                     room: room.name,
                     roomid: room._id,
+                    guestno,
                     userid,
                     fromdate,
                     todate,
@@ -43,7 +45,7 @@ router.post("/bookroom",async(req,res)=>{
         
                 const booking = await newbooking.save();
                 const roomtemp = await Room.findOne({_id:room._id});
-                roomtemp.currentbookings.push({bookingid:booking._id, fromdate: fromdate, todate:todate,userid:userid,status:booking.status});
+                roomtemp.currentbookings.push({bookingid:booking._id,guestno:guest_required, fromdate: fromdate, todate:todate,userid:userid,status:booking.status});
                 await roomtemp.save();
             
             
